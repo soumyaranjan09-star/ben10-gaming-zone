@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben 10 Alien Gaming Zone</title>
+
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FontAwesome for Sci-Fi Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         HEADER & PLUMBER TERMINAL STATUS
+         ========================================== -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-badge"></div>
+                <span>Alien Gaming Zone</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#games" class="active">Games</a></li>
+                <li><a href="#about">Database</a></li>
+                <li><a href="#plumbers">Plumbers Login</a></li>
+            </ul>
+            <div class="status-pill">
+                <div class="status-dot"></div>
+                <span>Omnitrix Online</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         HERO SECTION / MAIN OMNITRIX BANNER
+         ========================================== -->
+    <section class="hero">
+        <div class="hero-banner-container">
+            <img src="assets/omnitrix_banner.png" alt="Ben 10 Omnitrix glowing green sci-fi background"
+                class="hero-banner-img">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="neon-text">BEN 10 ALIEN GAMING ZONE</h1>
+            <p>Welcome to the ultimate Plumber training ground. Choose an alien profile, activate your Omnitrix, and
+                play HTML5 games directly inside your dashboard console below.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PLAY ZONE (THEATER MODE DIRECT EMBED)
+         ========================================== -->
+    <!-- 
+       Aap dynamic player panel ke zariye direct HTML5 game khel sakte hain.
+       Jab aap kisi card ke 'Play Now' par click karenge, script is container ke content ko load karegi.
+    -->
+    <div class="play-zone" id="play-zone">
+        <div class="player-card glass-panel">
+            <div class="player-header">
+                <div class="player-title" id="player-title">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>Loading Alien DNA...</span>
+                </div>
+                <button class="player-close-btn" onclick="closeGame()" title="Close Terminal">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
+            <div class="iframe-container">
+                <!-- Holographic bracket styling overlays -->
+                <div class="bracket bracket-tl"></div>
+                <div class="bracket bracket-tr"></div>
+                <div class="bracket bracket-bl"></div>
+                <div class="bracket bracket-br"></div>
+                <div class="iframe-overlay"></div>
+
+                <!-- 
+                  TUTORIAL: IFRAME EMBED SYSTEM
+                  1. `width="100%"` ensure karta hai ki game horizontal axis par control panel ke size ke mutabik full response kare.
+                  2. `height="450px"` perfect view area provide karta hai.
+                  3. `allowfullscreen` add karne se user browser full screen support trigger kar sakta hai.
+                  
+                  * Note: script.js dynamic roop se is iframe ka 'src' replace karegi.
+                -->
+                <iframe id="game-iframe" src="" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         RESPONSIVE GRID SECTION (GAME CARDS)
+         ========================================== -->
+    <main class="games-section" id="games">
+        <div class="section-header">
+            <h2>Select Your DNA & Play</h2>
+            <div class="section-header-underline"></div>
+        </div>
+
+        <div class="games-grid">
+
+            <!-- Card 1: Heatblast Fire Storm -->
+            <article class="game-card glass-panel">
+                <div class="scan-line"></div>
+                <div class="card-img-container">
+                    <img src="assets/card_heatblast.png" alt="Heatblast alien fire storm game preview">
+                    <div class="card-badge">Pyronite</div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Heatblast: Fire Storm</h3>
+                        <p class="card-desc">Sling fireballs at Vilgax's mechanical drones. Blast through plasma shields
+                            and absorb volcano energy.</p>
+                    </div>
+
+                    <!-- 
+                       KISI DUSRI GAME WEBSITE KA EMBED CODE FIT KARNE KI GUIDELINE:
+                       Aap card ke niche is button par game ka custom embed URL specify kar sakte hain data attributes ke zariye.
+                       Example: `data-url="https://html5.gamedistribution.com/xyz/"` ya fir `https://poki.com/...`
+                    -->
+                    <button class="btn-play" data-game-title="Heatblast: Fire Storm"
+                        data-url="https://diana-adrianas.github.io/Space-Invaders/">
+                        Play Now
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 2: XLR8 Neon Runner -->
+            <article class="game-card glass-panel">
+                <div class="scan-line"></div>
+                <div class="card-img-container">
+                    <img src="assets/card_xlr8.png" alt="XLR8 speed neon runner game preview">
+                    <div class="card-badge">Kineceleran</div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">XLR8: Neon Runner</h3>
+                        <p class="card-desc">Race down futuristic highways at 500mph. Dodge lasers, collect velocity
+                            codes, and hack gate grids.</p>
+                    </div>
+                    <button class="btn-play" data-game-title="XLR8: Neon Runner"
+                        data-url="https://hextris.github.io/hextris/">
+                        Play Now
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 3: Four Arms Brawl -->
+            <article class="game-card glass-panel">
+                <div class="scan-line"></div>
+                <div class="card-img-container">
+                    <img src="assets/card_fourarms.png" alt="Four Arms heavy brawl game preview">
+                    <div class="card-badge">Tetramand</div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Four Arms: Smash Arena</h3>
+                        <p class="card-desc">Showcase ultimate brute strength. Smash pillars, defeat wave of monsters,
+                            and win championship belts.</p>
+                    </div>
+                    <button class="btn-play" data-game-title="Four Arms: Smash Arena"
+                        data-url="https://nebez.github.io/floppybird/">
+                        Play Now
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 4: Diamondhead Crystal Shield -->
+            <article class="game-card glass-panel">
+                <div class="scan-line"></div>
+                <div class="card-img-container">
+                    <img src="assets/card_diamondhead.png" alt="Diamondhead defense wall game preview">
+                    <div class="card-badge">Petrosapien</div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Diamondhead: Shield Rush</h3>
+                        <p class="card-desc">Morph hands into razor-sharp crystal shards. Erect heavy shields to reflect
+                            back enemy blast waves.</p>
+                    </div>
+                    <button class="btn-play" data-game-title="Diamondhead: Shield Rush"
+                        data-url="https://gabrielecirulli.github.io/2048/">
+                        Play Now
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 5: Upgrade Matrix Hacker -->
+            <article class="game-card glass-panel">
+                <div class="scan-line"></div>
+                <div class="card-img-container">
+                    <img src="assets/card_upgrade.png" alt="Upgrade galvanic hack game preview">
+                    <div class="card-badge">Mechamorph</div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Upgrade: Hacking Protocol</h3>
+                        <p class="card-desc">Merge with target mainframe consoles. Re-route energy circuits, take
+                            control of gun turrets, and override protocols.</p>
+                    </div>
+                    <button class="btn-play" data-game-title="Upgrade: Hacking Protocol"
+                        data-url="https://dionyziz.github.io/canvas-tetris/">
+                        Play Now
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 6: Cannonbolt Roll -->
+            <article class="game-card glass-panel">
+                <div class="scan-line"></div>
+                <div class="card-img-container">
+                    <img src="assets/card_cannonbolt.png" alt="Cannonbolt arena pinball game preview">
+                    <div class="card-badge">Arburian</div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 class="card-title">Cannonbolt: Orbit Roll</h3>
+                        <p class="card-desc">Curl into an indestructible rolling sphere. Bounce off neon bumpers, gather
+                            orbit coins, and knock out targets.</p>
+                    </div>
+                    <button class="btn-play" data-game-title="Cannonbolt: Orbit Roll"
+                        data-url="https://clement-b.github.io/pacman/">
+                        Play Now
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ==========================================
+         TUTORIAL / DOCUMENTATION SECTION FOR USER
+         ========================================== -->
+    <section class="games-section" style="padding-top: 0;" id="about">
+        <div class="section-header">
+            <h2>How to Embed Custom 3rd Party Games</h2>
+            <div class="section-header-underline"></div>
+        </div>
+        <div class="glass-panel" style="padding: 2rem;">
+            <p style="margin-bottom: 1.5rem; color: var(--text-grey);">Aap is website ke codes ko easily customize kar
+                sakte hain. Dusri game websites (jaise Poki, CrazyGames ya MiniClip) se HTML5 games ko directly embed
+                karne ke 2 options hain:</p>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: var(--omni-green); font-family: var(--font-header); margin-bottom: 0.5rem;"><i
+                        class="fa-solid fa-code"></i> Option A: Dynamic Theater Console (Recommended)</h4>
+                <p style="font-size: 0.95rem; color: var(--text-grey); margin-bottom: 0.8rem;">Is method mein jab user
+                    click karega, tabhi game iframe load hoga. Isse performance super fast rehti hai. HTML file mein
+                    button par <code>data-url</code> badlein:</p>
+                <pre
+                    style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 6px; font-size: 0.85rem; overflow-x: auto; border: 1px dashed var(--omni-green-border); color: #00ff00;">&lt;button class="btn-play" 
+        data-game-title="Custom Game Title" 
+        data-url="APNA_IFRAME_GAME_EMBED_URL_YAHAN_RAKHEIN"&gt;
+    Play Now
+&lt;/button&gt;</pre>
+            </div>
+
+            <div>
+                <h4 style="color: var(--omni-green); font-family: var(--font-header); margin-bottom: 0.5rem;"><i
+                        class="fa-solid fa-window-restore"></i> Option B: Direct Embed inside Card Grid</h4>
+                <p style="font-size: 0.95rem; color: var(--text-grey); margin-bottom: 0.8rem;">Agar aap click features
+                    ke bajaye, seedhe card ke andar hi game displays chahate hain, toh card ke andar image ko hata kar
+                    wahan iframe fit kar sakte hain:</p>
+                <pre
+                    style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 6px; font-size: 0.85rem; overflow-x: auto; border: 1px dashed var(--omni-green-border); color: #00ff00;">&lt;div class="card-img-container" style="height: 450px;"&gt;
+    &lt;iframe src="PASTE_YOUR_EMBED_URL_HERE" 
+            width="100%" 
+            height="450px" 
+            style="border: none; box-shadow: 0 0 15px rgba(0,255,0,0.2);" 
+            allowfullscreen&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER SECTION
+         ========================================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-badge">
+                <i class="fa-solid fa-circle-nodes"></i>
+            </div>
+            <p class="footer-text">&copy; 2026 Ben 10 Multiverse. Plumber Authorization Level 4. Built for <span>Ben 10
+                    Alien Gaming Zone</span>.</p>
+        </div>
+    </footer>
+
+    <!-- Omnitrix Green Flash Overlay -->
+    <div id="omnitrix-flash"></div>
+
+    <!-- Custom Script Link -->
+    <script src="script.js"></script>
+</body>
+
+</html>

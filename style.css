@@ -1,0 +1,638 @@
+/* ==========================================
+   BEN 10 ALIEN GAMING ZONE - DESIGN SYSTEM
+   ========================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-dark: #050505;
+    --bg-card: rgba(10, 15, 10, 0.7);
+    --omni-green: #00ff00;
+    --omni-green-glow: rgba(0, 255, 0, 0.6);
+    --omni-green-dim: rgba(0, 255, 0, 0.15);
+    --omni-green-border: rgba(0, 255, 0, 0.25);
+    --text-white: #ffffff;
+    --text-grey: #8a8f8a;
+    
+    --font-header: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--omni-green) var(--bg-dark);
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 50% 30%, rgba(0, 255, 0, 0.05) 0%, transparent 60%),
+        radial-gradient(circle at 10% 80%, rgba(0, 255, 0, 0.03) 0%, transparent 50%);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--omni-green);
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--omni-green-glow);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00cc00;
+}
+
+/* Neon Text & Border Glows */
+.neon-text {
+    text-shadow: 0 0 10px var(--omni-green-glow), 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.neon-border {
+    box-shadow: 0 0 15px var(--omni-green-dim), inset 0 0 10px var(--omni-green-dim);
+    border: 1px solid var(--omni-green-border);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--omni-green-border);
+    border-radius: 12px;
+}
+
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-b: 1px solid var(--omni-green-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-header);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--text-white);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.logo-badge {
+    width: 32px;
+    height: 32px;
+    background: radial-gradient(circle, var(--omni-green) 0%, #002200 80%);
+    border: 3px solid #1a1a1a;
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--omni-green);
+    position: relative;
+    animation: rotateOmni 8s linear infinite;
+}
+
+.logo-badge::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid #000;
+}
+
+.logo-badge::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid #000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-grey);
+    text-decoration: none;
+    font-family: var(--font-header);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--omni-green);
+    text-shadow: 0 0 8px var(--omni-green-glow);
+}
+
+/* Plumber Badge Terminal Status */
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid var(--omni-green-border);
+    border-radius: 50px;
+    font-family: var(--font-header);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--omni-green);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--omni-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--omni-green);
+    animation: pulseGlow 1.5s infinite;
+}
+
+/* Hero Section */
+.hero {
+    padding-top: 140px;
+    padding-bottom: 60px;
+    text-align: center;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.hero-banner-container {
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.15);
+    border: 1px solid var(--omni-green-border);
+    height: 350px;
+}
+
+.hero-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, var(--bg-dark) 95%);
+}
+
+.hero-content h1 {
+    font-family: var(--font-header);
+    font-weight: 900;
+    font-size: 3rem;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: var(--text-grey);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Play Zone (Iframe Container) */
+.play-zone {
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+    padding: 0 2rem;
+    display: none; /* Shown dynamically via JS */
+}
+
+.play-zone.active {
+    display: block;
+    animation: slideDown 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.player-card {
+    border: 2px solid var(--omni-green);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.player-header {
+    background: #0f170f;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--omni-green-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-title {
+    font-family: var(--font-header);
+    font-weight: 700;
+    color: var(--omni-green);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-grey);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.player-close-btn:hover {
+    color: var(--omni-green);
+    text-shadow: 0 0 5px var(--omni-green);
+}
+
+.iframe-container {
+    width: 100%;
+    height: 450px;
+    background: #000;
+    position: relative;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Scanline Overlay for Iframe */
+.iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 255, 0, 0.08) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 10;
+    opacity: 0.4;
+}
+
+/* Corner Bracket Accents for Holographic Look */
+.bracket {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--omni-green);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.bracket-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.bracket-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.bracket-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.bracket-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+/* Grid & Cards Section */
+.games-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 6rem 2rem;
+}
+
+.section-header {
+    margin-bottom: 3rem;
+    text-align: left;
+    position: relative;
+}
+
+.section-header h2 {
+    font-family: var(--font-header);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-header-underline {
+    height: 3px;
+    width: 80px;
+    background: var(--omni-green);
+    margin-top: 8px;
+    box-shadow: 0 0 10px var(--omni-green);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Game Card Styles */
+.game-card {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--omni-green);
+    box-shadow: 0 12px 30px rgba(0, 255, 0, 0.2);
+}
+
+.card-img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.game-card:hover .card-img-container img {
+    transform: scale(1.1);
+}
+
+/* Dynamic Scan Line Overlay on hover */
+.scan-line {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--omni-green);
+    box-shadow: 0 0 15px var(--omni-green), 0 0 30px var(--omni-green);
+    opacity: 0;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.game-card:hover .scan-line {
+    animation: scanAnimation 1.8s infinite linear;
+    opacity: 1;
+}
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid var(--omni-green);
+    color: var(--omni-green);
+    font-family: var(--font-header);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.2);
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-family: var(--font-header);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Neon Glow Button */
+.btn-play {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--omni-green);
+    color: var(--omni-green);
+    font-family: var(--font-header);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-play:hover {
+    background: var(--omni-green);
+    color: #000;
+    box-shadow: 0 0 20px var(--omni-green-glow);
+    font-weight: 900;
+}
+
+/* Footer Section */
+footer {
+    border-t: 1px solid var(--omni-green-border);
+    background: #020202;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-badge {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, var(--omni-green) 0%, #001a00 80%);
+    border: 3px solid #222;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--omni-green-dim);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-badge i {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    animation: rotateOmni 12s linear infinite;
+}
+
+.footer-text {
+    font-size: 0.85rem;
+    color: var(--text-grey);
+    letter-spacing: 0.5px;
+}
+
+.footer-text span {
+    color: var(--omni-green);
+    font-weight: 700;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+
+@keyframes rotateOmni {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.6; box-shadow: 0 0 5px var(--omni-green); }
+    50% { opacity: 1; box-shadow: 0 0 15px var(--omni-green); }
+}
+
+@keyframes scanAnimation {
+    0% { top: -10px; }
+    100% { top: 100%; }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Simple navbar for mobile */
+    }
+    .hero {
+        padding-top: 100px;
+    }
+    .hero-banner-container {
+        height: 220px;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .iframe-container {
+        height: 300px;
+    }
+}
+}
+
+/* ==========================================
+   OMNITRIX GREEN FLASH TRANSITION
+   ========================================== */
+#omnitrix-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #ffffff 10%, #00ff00 55%, #000800 100%);
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#omnitrix-flash.active {
+    animation: omniFlashAnim 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes omniFlashAnim {
+    0% {
+        opacity: 0;
+        filter: brightness(1);
+    }
+    15% {
+        opacity: 1;
+        filter: brightness(2);
+    }
+    30% {
+        opacity: 1;
+        filter: brightness(1.5);
+    }
+    100% {
+        opacity: 0;
+        filter: brightness(1);
+    }
+}
